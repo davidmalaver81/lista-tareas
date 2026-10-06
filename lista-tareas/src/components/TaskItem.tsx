@@ -1,4 +1,4 @@
-import { Task } from "./TaskList";
+import type { Task } from "./types";
 
 interface TaskItemProps {
   task: Task;
@@ -6,28 +6,20 @@ interface TaskItemProps {
   onDelete: (id: number) => void;
 }
 
-function TaskItem({
-  task,
-  onToggle,
-  onDelete
-}: TaskItemProps) {
+function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
   return (
     <div>
       <span
         onClick={() => onToggle(task.id)}
         style={{
-          textDecoration: task.completed
-            ? "line-through"
-            : "none",
+          textDecoration: task.completed ? "line-through" : "none",
           cursor: "pointer"
         }}
       >
         {task.text}
       </span>
 
-      <button onClick={() => onDelete(task.id)}>
-        Eliminar
-      </button>
+      <button onClick={() => onDelete(task.id)}>Eliminar</button>
     </div>
   );
 }
